@@ -1,0 +1,87 @@
+/* Index only */
+#navbar.index {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  color: #ffffff;
+  border-bottom: solid 1px white;
+  background: rgba(255, 250, 250,0);
+  transition: background .5s ease-out;
+}
+
+#navbar-logo.index{
+  height: 150px;
+  margin-left: 10px;
+  display: none;
+  cursor: pointer;
+}
+
+#navbar-logo-white.index {
+  height: 150px;
+  margin-left: 10px;
+  cursor: pointer;
+  display: block;
+}
+
+
+#navbar:hover.index {
+  background: rgba(255, 250, 250,0.8);
+  color: #005894;
+}
+
+#navbar.index:hover #navbar-logo {
+  display: flex;
+}
+
+#navbar.index:hover #navbar-logo-white {
+  display: none;
+}
+
+/* Non index */
+
+#navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  border-bottom: solid 1px white;
+  background: rgba(255, 250, 250,0.8);
+  color: #005894;
+}
+
+#navbar-logo{
+  height: 150px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#navbar-logo-white {
+  height: 150px;
+  margin-left: 10px;
+  cursor: pointer;
+  display: none
+}
+
+/* Common */
+.navbar-title{
+  margin: 0 30px;
+}
+
+.navbar-title:hover{
+  cursor: pointer;
+}
+
+.navbar-title:hover .title-block{
+  height: 10px;
+}
+
+.title-block {
+  width: auto;
+  height: 0px;
+  transition: width 0s, height 1s;
+  background-color: #005894;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
