@@ -1,0 +1,12 @@
+.category-image {
+  height: 100px;
+  width: 100px;
+}
+
+.category-block {
+  color: #919191;
+}
+
+.product-image {
+  max-height: 200px;
+}

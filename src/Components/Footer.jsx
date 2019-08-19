@@ -6,6 +6,9 @@ import {
 import {
   makeStyles
 } from '@material-ui/core/styles';
+import {
+  Grid
+} from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -18,11 +21,12 @@ const Footer = () => {
   const classes = useStyles();
   return(
     <div id="footer">
-        <div className="footer-block">
+      <Grid container spacing={4} justify="space-between">
+      <Grid item xs={12} sm={4}>
           <h2>About Us</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas provident id quidem, rem animi ducimus praesentium. Dolorum aperiam quibusdam, consectetur voluptatibus quaerat neque corporis ipsa fuga, numquam cumque laboriosam eligendi.</p>  
-        </div>
-        <div className="footer-block">
+        </Grid>
+        <Grid item xs={12} sm={4}>
           <h2>Contact Us</h2>
           <div style={{display: "flex", alignItems: "center"}}>
             <div>
@@ -44,11 +48,12 @@ const Footer = () => {
               fernanda@mvsIndo.com
             </div>
           </div>
-        </div>
-        <div className="footer-block">
+        </Grid>
+        <Grid item xs={12} sm={4}>
           <h2>About Us</h2>
           <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas provident id quidem, rem animi ducimus praesentium. Dolorum aperiam quibusdam, consectetur voluptatibus quaerat neque corporis ipsa fuga, numquam cumque laboriosam eligendi.</h3>  
-        </div>
+        </Grid>
+      </Grid>
       </div>
   )
 }

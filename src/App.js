@@ -4,17 +4,26 @@ import './App.css';
 
 
 // COMPONENTS
-import TopBar from './Components/TopBar'
-import Header from './Components/Header'
-import Footer from './Components/Footer'
+import TopBar from './Components/TopBar';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 
 // VIEWS
-import Index from './Views/index'
+import Index from './Views/index';
+import Product from './Views/Product';
 
+const Test = (test) => {
+  return (
+    <div style={{height: "500px"}}>
+      <h1>test</h1>
+      <h1>test</h1>
+      <h1>test</h1>
+      <h1>test</h1>
+      <h1>test</h1>
+    </div>
+  )
 
-const Products = () => (
-  <h2>Produk</h2>
-)
+}
 
 function App() {
   return (
@@ -24,7 +33,8 @@ function App() {
         <Header />
 
         <Route path="/" exact component={Index} />
-        <Route path="/products" exact component={Products} />
+        <Route path="/products" exact component={Product} />
+        <Route path={`/products/:productId`} component={Test} />
 
         <Footer />
       </Router>

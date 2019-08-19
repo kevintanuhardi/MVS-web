@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ClassName from 'classnames'
 import { Link } from 'react-router-dom';
+import Helpers from '../helpers/common'
 
 import './Header.css'
 
@@ -11,42 +12,49 @@ class Header extends Component {
     navbarTitle: [
       {
         title: "Tentang Kami",
-        link: "/about-us"
+        link: "about-us"
       },
       {
         title: "Products",
-        link: "/products"
+        link: "products"
       },
       {
         title: "News",
-        link: "/news"
+        link: "news"
       },
       {
         title: "Contact Us",
-        link: "/contact-us"
+        link: "contact-us"
       },
       {
         title: "Company Profile",
-        link: "/company-profile"
+        link: "company-profile"
       },
     ],
     location: this.props.location.pathname,
+  }
+
+  componentDidUpdate(prevProps){
+    if(prevProps.location.pathname !== this.props.location.pathname) this.setState({location: this.props.location.pathname})
   }
 
   // RENDER
 
   renderLink = () => {
     const { navbarTitle, location } = this.state;
+    const { redirect } = Helpers;
+
     const isIndex = location === '/'
 
     return navbarTitle.map((el, index) => (
-      <div  className={ClassName("navbar-title", {index: isIndex})} key={index}>
-        <Link to={el.link}>
-          <h3>
-            {el.title}
-          </h3>
-        </Link>
-
+      <div
+      className={ClassName("navbar-title", {index: isIndex})}
+      key={index}
+      onClick={() => redirect(this, el.link)}
+      >
+        <h3>
+          {el.title}
+        </h3>
         <div className={ClassName("title-block", {index: isIndex})}/>
       </div>
     ))

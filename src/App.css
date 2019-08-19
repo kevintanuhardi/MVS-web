@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 200;
 }
 
 .App-logo {
@@ -73,6 +75,23 @@
   top: -11rem;
     
   margin-bottom: -14rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jumbotron-block {
+  z-index: -1;
+  margin-right: 500px;
+  background-color: rgba(255,255,250, 0.5);
+  border-left: 20px solid #005894;
+  padding-right: 20px;
+}
+
+.jumbotron-text{
+  font-weight: 200;
+  text-align: left;
+  font-size: 2.5em;
 }
 
 .news-section {
