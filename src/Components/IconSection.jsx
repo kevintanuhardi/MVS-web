@@ -1,11 +1,14 @@
 import React from 'react';
 import {
+  Grid,
+} from '@material-ui/core'
+import {
   CalendarToday as CalendarIcon,
   Check as CheckIcon,
   VerifiedUser as ShieldIcon,
 } from '@material-ui/icons';
 import {
-  makeStyles
+  makeStyles,
 } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -25,13 +28,17 @@ const useStyles = makeStyles(theme => ({
   //     color: red[800],
   //   },
   // },
+  section: {
+    minHeight: "500px",
+    backgroundColor: "#f1fcff",
+  }
 }));
 
 const IconSection = () => {
   const classes = useStyles();
   return (
-    <div className="icon-section">
-      <div>
+    <Grid container alignContent="center"  className={classes.section}>
+      <Grid item xs={12} sm={4}>
       <CalendarIcon className={classes.icon}>
         filled
       </CalendarIcon>
@@ -39,11 +46,11 @@ const IconSection = () => {
         Ready Stock
       </h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis reprehenderit delectus aspernatur exercitationem ut veritatis obcaecati consequatur vero aut officiis excepturi, corrupti eius itaque quam illo fugiat commodi incidunt natus.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis reprehenderit delectus aspernatur exercitationem ut veritatis obcae
       </p>
 
-      </div>
-      <div>
+      </Grid>
+      <Grid item xs={12} sm={4}>
         <CheckIcon className={classes.icon}>
           filled
         </CheckIcon>
@@ -51,10 +58,10 @@ const IconSection = () => {
           Quality
         </h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis reprehenderit delectus aspernatur exercitationem ut veritatis obcaecati consequatur vero aut officiis excepturi, corrupti eius itaque quam illo fugiat commodi incidunt natus.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis reprehenderit delectus aspernatur exercitationem ut veritatis obcae
         </p>
-      </div>
-      <div>
+      </Grid>
+      <Grid item xs={12} sm={4}>
         <ShieldIcon className={classes.icon}>
           filled
         </ShieldIcon>
@@ -62,13 +69,10 @@ const IconSection = () => {
           Helpful Support
         </h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis reprehenderit delectus aspernatur exercitationem ut veritatis obcaecati consequatur vero aut officiis excepturi, corrupti eius itaque quam illo fugiat commodi incidunt natus.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis reprehenderit delectus aspernatur exercitationem ut veritatis obcae
         </p>
-      </div>
-      <div>
-
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 

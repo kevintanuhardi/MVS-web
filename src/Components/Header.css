@@ -1,87 +1,171 @@
-/* Index only */
-#navbar.index {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  color: #ffffff;
-  border-bottom: solid 1px white;
-  background: rgba(255, 250, 250,0);
-  transition: background .5s ease-out;
+@media only screen and (min-width: 768px) {
+  /* Index only */
+  #navbar.index {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    color: #ffffff;
+    border-bottom: solid 1px white;
+    background: rgba(255, 250, 250,0);
+    transition: background .5s ease-out;
+  }
+
+  #navbar-text.index{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  
+  #navbar-logo.index{
+    height: 150px;
+    margin-left: 10px;
+    display: none;
+    cursor: pointer;
+  }
+  
+  #navbar-logo-white.index {
+    height: 150px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: block;
+  }
+  
+  
+  #navbar:hover.index {
+    background: rgba(255, 250, 250,0.8);
+    color: #005894;
+  }
+  
+  #navbar.index:hover #navbar-logo {
+    display: flex;
+  }
+  
+  #navbar.index:hover #navbar-logo-white {
+    display: none;
+  }
+  
+  /* Non index */
+  
+  #navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    border-bottom: solid 1px white;
+    background: rgba(255, 250, 250,0.8);
+    color: #005894;
+    max-width: 100vw;
+  }
+
+  #navbar-text{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  
+  #navbar-logo{
+    height: 150px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  #navbar-logo-white {
+    height: 150px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: none
+  }
+  
+  /* Common */
+  .navbar-title{
+    margin: 0 30px;
+  }
+  
+  .navbar-title:hover{
+    cursor: pointer;
+  }
+  
+  .navbar-title:hover .title-block{
+    height: 10px;
+  }
+  
+  .title-block {
+    width: auto;
+    height: 0px;
+    transition: width 0s, height 1s;
+    background-color: #005894;
+  }
+  
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
+  /* For desktop: */
+  
 }
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  #navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    /* align-items: flex-start; */
+    border-bottom: solid 1px white;
+    background: rgba(255, 250, 250,0.8);
+    color: #005894;
+    max-width: 100vw;
+  }
 
-#navbar-logo.index{
-  height: 150px;
-  margin-left: 10px;
-  display: none;
-  cursor: pointer;
-}
+  #navbar-text{
+    /* display: none; */
+    width: 100vw;
 
-#navbar-logo-white.index {
-  height: 150px;
-  margin-left: 10px;
-  cursor: pointer;
-  display: block;
-}
+    position: absolute;
+    top: 199px;
 
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
 
-#navbar:hover.index {
-  background: rgba(255, 250, 250,0.8);
-  color: #005894;
-}
+    background-color: rgba(255, 250, 250,0.8);
 
-#navbar.index:hover #navbar-logo {
-  display: flex;
-}
-
-#navbar.index:hover #navbar-logo-white {
-  display: none;
-}
-
-/* Non index */
-
-#navbar {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  border-bottom: solid 1px white;
-  background: rgba(255, 250, 250,0.8);
-  color: #005894;
-}
-
-#navbar-logo{
-  height: 150px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-#navbar-logo-white {
-  height: 150px;
-  margin-left: 10px;
-  cursor: pointer;
-  display: none
-}
-
-/* Common */
-.navbar-title{
-  margin: 0 30px;
-}
-
-.navbar-title:hover{
-  cursor: pointer;
-}
-
-.navbar-title:hover .title-block{
-  height: 10px;
-}
-
-.title-block {
-  width: auto;
-  height: 0px;
-  transition: width 0s, height 1s;
-  background-color: #005894;
-}
-
-a{
-  color: inherit;
-  text-decoration: none;
+    transition: width 0s, height 1s;
+  }
+  
+  #navbar-logo{
+    height: 150px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  #navbar-logo-white {
+    height: 150px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: none
+  }
+  
+  .navbar-title{
+    margin: 0 30px;
+  }
+  
+  .navbar-title:hover{
+    cursor: pointer;
+  }
+  
+  .navbar-title:hover .title-block{
+    height: 10px;
+  }
+  
+  .title-block {
+    width: auto;
+    height: 0px;
+    transition: width 0s, height 1s;
+    background-color: #005894;
+  }
+  
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
 }

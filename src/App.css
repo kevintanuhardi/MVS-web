@@ -35,7 +35,7 @@
 }
 
 #topbar {
-  height: 30px;
+  min-height: 30px;
   background-color: #005894;
   display: flex;
   color: white;

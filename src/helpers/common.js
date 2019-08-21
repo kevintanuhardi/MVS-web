@@ -3,4 +3,10 @@ const redirect = (self, path, params)  => {
   self.props.history.push(completePath)
 }
 
-export default { redirect }
+const toggleBoolean = (self, stateName, preferedState) => {
+  const newState = preferedState? preferedState : !self.state[stateName];
+
+  self.setState({[stateName]: newState})
+}
+
+export default { redirect, toggleBoolean }
