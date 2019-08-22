@@ -9,4 +9,18 @@ const toggleBoolean = (self, stateName, preferedState) => {
   self.setState({[stateName]: newState})
 }
 
-export default { redirect, toggleBoolean }
+const handleChange = (self, stateName, preferedState) => {
+  console.log(stateName)
+  if(stateName.indexOf('.') !== -1) {
+    const arrStateName = stateName.split('.');
+
+    const selectedObj = self.state[arrStateName[0]]
+    selectedObj[arrStateName[1]] = preferedState;
+
+    return self.setState({[arrStateName[0]] : selectedObj})
+  } else {
+    return self.setState({[stateName]: preferedState})
+  }
+}
+
+export default { redirect, toggleBoolean, handleChange }

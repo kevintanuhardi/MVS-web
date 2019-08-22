@@ -11,6 +11,7 @@ import {
   withStyles
 } from '@material-ui/core/styles';
 import {withRouter} from 'react-router-dom';
+import Media from 'react-media';
 
 const styles = {
   iconBlock: {
@@ -109,12 +110,26 @@ class Header extends Component {
             filled
           </DrawerIcon>
         </div>
-        {
+        {/* {
          displayNavText &&
         <div id="navbar-text">
           {this.renderLink()}
         </div>
-        }
+        } */}
+        <Media query="(max-width: 768px)">
+          {matches =>
+            matches ? (           
+                displayNavText &&
+                <div id="navbar-text">
+                  {this.renderLink()}
+                </div>  
+            ) : (
+              <div id="navbar-text">
+                {this.renderLink()}
+              </div>  
+            )
+          }
+        </Media>
       </div>
     );
   }

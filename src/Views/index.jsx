@@ -2,14 +2,14 @@ import React from 'react';
 
 
 // Components
-import Content from '../Components/Content'
+import Jumbotron from '../Components/Jumbotron'
 import IconSection from '../Components/IconSection'
 import News from '../Components/News'
 
 const index = () => {
   return (
     <div>
-      <Content />
+      <Jumbotron />
       <IconSection /> 
       <News />
     </div>

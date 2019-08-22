@@ -4,6 +4,15 @@
   font-weight: 200;
 }
 
+.custom-container{
+  max-width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -94,9 +103,15 @@
   font-size: 2.5em;
 }
 
+@media only screen and (max-width: 768px) {
+  .jumbotron-block {
+    margin-right: 0px;
+  }
+}
+
 .news-section {
   width: 100vw;
-  height: 700px;
+  min-height: 700px;
   background-image: 
   linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6)),
   url("/news-background.jpg");
@@ -108,6 +123,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+}
+
+@media only screen and (max-width: 768px) {
+  .news-section {
+    background-position: 10% 0%;
+  }
 }
 
 .section-text {

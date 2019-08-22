@@ -11,6 +11,7 @@ import Footer from './Components/Footer';
 // VIEWS
 import Index from './Views/index';
 import Product from './Views/Product';
+import ProductDetail from './Views/ProductDetail';
 
 const Test = (test) => {
   return (
@@ -34,7 +35,7 @@ function App() {
 
         <Route path="/" exact component={Index} />
         <Route path="/products" exact component={Product} />
-        <Route path={`/products/:productId`} component={Test} />
+        <Route path={`/products/:productId`} component={ProductDetail} />
 
         <Footer />
       </Router>

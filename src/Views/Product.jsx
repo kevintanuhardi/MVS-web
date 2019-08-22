@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Grid,
   Card,
-  CardMedia,
   CardContent,
   CardHeader,
 } from '@material-ui/core';
@@ -145,7 +143,7 @@ class Product extends Component {
       <Grid container spacing={2}>
         {
           products.map((el, index) => (
-            <Grid item key={index} xs={12} sm={3}>
+            <Grid item key={index} xs={6} sm={3}>
               <Card
                 className={classes.card}
                 onClick={() => redirect(this, 'products', el._id)}
@@ -171,7 +169,7 @@ class Product extends Component {
   }
   render () {
     return (
-      <div>
+      <div className="custom-container">
         <h1>Category</h1>
         {this.renderCategoryGrid()}
         <Grid container spacing={5} justify="space-between">

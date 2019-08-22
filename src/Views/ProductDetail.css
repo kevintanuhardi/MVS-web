@@ -1,0 +1,26 @@
+.primary-image{
+  max-width: 100%;
+  height: auto;
+  /* position: relative; */
+  border: 2px solid #e1e1e1;
+}
+
+#image-wheel{
+  /* height: 100px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.secondary-image{
+  width: 120px;
+  height: auto;
+  margin: 10px 0;
+  border: 2px solid #e1e1e1;
+  cursor: pointer;
+}
+
+#title-block{
+  text-align: left;
+  padding: 0 2%;
+}
