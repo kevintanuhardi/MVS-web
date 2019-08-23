@@ -18,6 +18,12 @@ import './ProductDetail.css';
 const styles = {
   tab: {
     marginTop: "10%",
+  },
+  description: {
+    textAlign: 'left',
+  },
+  tabBody: {
+    border: "solid 1px #e9ebee"
   }
 }
 
@@ -26,6 +32,7 @@ class ProductDetail extends Component {
     //Product Data
     name: "CD-6011 Fumigate Orthopedic Drill",
     subtitle: "Ruijin orthopeadic bone drill is also a orthopedic drill system provides stable operation,safe, reliable, save time and effort.This type of bone drill was modified from industrial drill, apply to trauma operation, compact and lightweight making it useful in long operations.Fumigation sterilization of the whole machine (No sterilization under high temperature).Charging time is short.",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eos ex exercitationem sequi tempore itaque suscipit, iusto officia earum at aspernatur magnam, iure harum accusamus corrupti, soluta porro modi. Voluptatem.",
     specificationTable: {
       'Model NO.': 'CD-6011',
       Type: 'Awl',
@@ -105,9 +112,13 @@ class ProductDetail extends Component {
     )
   }
 
-  renderSpecificationTable = () => {
-    const { specificationTable } = this.state;
-    return (
+
+  renderProductTabs = () => {
+    const { activeTab, variances, description, specificationTable } = this.state;
+    const { classes } = this.props;
+    const { handleChange } = Helpers;
+
+    const renderSpecificationTable = () => (
       <Table responsive>
         <tbody>
           {Object.keys(specificationTable).map((el, index) => (
@@ -119,14 +130,6 @@ class ProductDetail extends Component {
         </tbody>
       </Table>
     )
-  }
-
-
-  renderProductTabs = () => {
-    const { renderSpecificationTable } = this;
-    const { activeTab, variances } = this.state;
-    const { classes } = this.props;
-    const { handleChange } = Helpers;
 
     const renderVariancesTable = () => (
       <Table responsive>
@@ -142,16 +145,17 @@ class ProductDetail extends Component {
 
     return (
       <Tabs id="controlled-tab-example" className={classes.tab} activeKey={activeTab} onSelect={k => handleChange(this, "activeTab", k)} >
-        <Tab eventKey="product-specification" title="Product Specification">
+        <Tab className={classes.tabBody} eventKey="product-specification" title="Product Specification">
           {renderSpecificationTable()}
+          <p className={classes.description}>{description}</p>
         </Tab>
         {
           Boolean(variances.length) &&
-          <Tab eventKey="product-variances" title="Product Variances">
+          <Tab className={classes.tabBody} eventKey="product-variances" title="Product Variances">
             {renderVariancesTable()}
           </Tab>
         }
-        <Tab eventKey="product-structure" title="Product Structure">
+        <Tab className={classes.tabBody} eventKey="product-structure" title="Product Structure">
           {/* <Sonnet /> */}
         </Tab>
       </Tabs>
@@ -175,31 +179,6 @@ class ProductDetail extends Component {
               </h2>
               <h5>{subtitle}</h5>
             </div>
-            {/* <Card
-              className={classes.card}
-            >
-              <CardHeader
-                title="Product Specification"
-              />
-              <CardContent>
-                <Table responsive>
-                  <tbody>
-                    <tr>
-                      <th>Table cell</th>
-                      <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi quidem vero assumenda repellat quia s</td>
-                    </tr>
-                    <tr>
-                      <th>Table cell</th>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <th>Table cell</th>
-                      <td>Table cell</td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </CardContent>
-            </Card> */}
             {renderProductTabs()}
           </Grid>
         </Grid>

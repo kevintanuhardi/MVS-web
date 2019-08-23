@@ -9,22 +9,10 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 
 // VIEWS
-import Index from './Views/index';
+import Home from './Views/Home';
 import Product from './Views/Product';
+import News from './Views/News';
 import ProductDetail from './Views/ProductDetail';
-
-const Test = (test) => {
-  return (
-    <div style={{height: "500px"}}>
-      <h1>test</h1>
-      <h1>test</h1>
-      <h1>test</h1>
-      <h1>test</h1>
-      <h1>test</h1>
-    </div>
-  )
-
-}
 
 function App() {
   return (
@@ -33,7 +21,8 @@ function App() {
         <TopBar />
         <Header />
 
-        <Route path="/" exact component={Index} />
+        <Route path="/" exact component={Home} />
+        <Route path="/news" exact component={News} />
         <Route path="/products" exact component={Product} />
         <Route path={`/products/:productId`} component={ProductDetail} />
 
