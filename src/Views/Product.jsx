@@ -196,7 +196,7 @@ class Product extends Component {
               <h3 className='colored-text'>
                 {selectedCategory.title}
               </h3>
-              <p>{selectedCategory.description}</p>
+              {/* <p>{selectedCategory.description}</p> */}
             </Grid>
           {/* } */}
           <Grid item xs={12} sm={8}>

@@ -53,7 +53,7 @@ class NewsDetail extends Component {
             return (
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
+                  className="d-block w-80 mx-auto"
                   src={el.imgUrl}
                   alt={el.title}
                 />
@@ -65,20 +65,6 @@ class NewsDetail extends Component {
             )
           })
         }
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={`${process.env.PUBLIC_URL}/jumbotron.jpg`}
-              alt="Third slide"
-            />
-
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item>
         </Carousel>
     )
   }
@@ -112,9 +98,6 @@ class NewsDetail extends Component {
         <div className='custom-container content-block'>
           {this.renderCarousel()}
           <div className='paragraph-block'>
-              <p>{content}</p>
-              <p>{content}</p>
-              <p>{content}</p>
               <p>{content}</p>
           </div>
         </div>

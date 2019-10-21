@@ -11,13 +11,13 @@ class AboutUs extends Component {
             </h1>
             <br />
             <h3>
-              Meet the needs of the community for health equipment that has a competitive advantage
+            -	Meet the needs of the community for animal health equipment that has competitive advantage
             </h3>
             <h3>
-              Meet the needs of the community for health equipment that has a competitive advantage
+            -	Provide and distribute animal health equipment which is the best product in terms of safety and quality standards.
             </h3>
             <h3>
-              Meet the needs of the community for health equipment that has a competitive advantage
+            -	Providing the best service to all customers.
             </h3>
           </div>
           <div className="half-block first-image">
@@ -32,13 +32,10 @@ class AboutUs extends Component {
             </h1>
             <br />
             <h3>
-              Meet the needs of the community for health equipment that has a competitive advantage
+            -	Being a trusted provider of animal health equipment in Indonesia
             </h3>
             <h3>
-              Meet the needs of the community for health equipment that has a competitive advantage
-            </h3>
-            <h3>
-              Meet the needs of the community for health equipment that has a competitive advantage
+            -	Become an animal health equipment distributor company that has the competitiveness and become a leading player in the region and outside the region
             </h3>
           </div>
         </div>

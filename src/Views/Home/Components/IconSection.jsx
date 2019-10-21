@@ -4,6 +4,7 @@ import {
 } from '@material-ui/core'
 import {
   CalendarToday as CalendarIcon,
+  FlightTakeoff as CountryWideIcon,
   Check as CheckIcon,
   VerifiedUser as ShieldIcon,
 } from '@material-ui/icons';
@@ -44,38 +45,50 @@ const IconSection = () => {
   const classes = useStyles();
   return (
     <Grid container spacing={5} alignContent="center"  className={classes.section}>
-      <Grid item className={classes.iconBlock} xs={12} sm={4}>
+      <Grid item className={classes.iconBlock} xs={12} sm={3}>
       <CalendarIcon className={classes.icon}>
         filled
       </CalendarIcon>
       <h2>
-        Ready Stock
+        READY STOCK
       </h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis reprehenderit delectus aspernatur exercitationem ut veritatis obcae
+        All year long availability of trusted products
       </p>
 
       </Grid>
-      <Grid item className={classes.iconBlock} xs={12} sm={4}>
+      <Grid item className={classes.iconBlock} xs={12} sm={3}>
+      <CountryWideIcon className={classes.icon}>
+        filled
+      </CountryWideIcon>
+      <h2>
+        COUNTRY WIDE SHIPMENT
+      </h2>
+      <p>
+        Safe and insuranced shipment countrywide
+      </p>
+
+      </Grid>
+      <Grid item className={classes.iconBlock} xs={12} sm={3}>
         <CheckIcon className={classes.icon}>
           filled
         </CheckIcon>
         <h2>
-          Quality
+          QUALITY
         </h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis reprehenderit delectus aspernatur exercitationem ut veritatis obcae
+          The most advanced enginereed products
         </p>
       </Grid>
-      <Grid item className={classes.iconBlock} xs={12} sm={4}>
+      <Grid item className={classes.iconBlock} xs={12} sm={3}>
         <ShieldIcon className={classes.icon}>
           filled
         </ShieldIcon>
         <h2>
-          Helpful Support
+          KNOWLEDGEABLE SUPPORT
         </h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis reprehenderit delectus aspernatur exercitationem ut veritatis obcae
+          The supports team are specially trained to tend to customer needs, and understand the medical process.
         </p>
       </Grid>
     </Grid>
