@@ -11,8 +11,10 @@ import {
   withStyles
 } from '@material-ui/core/styles'
 import ReactImageMagnify from 'react-image-magnify';
+import {withRouter} from 'react-router-dom';
 
 import Helpers from '../helpers/common';
+import fakeFetch from '../helpers/fakeFetch';
 import './ProductDetail.css';
 
 const styles = {
@@ -21,6 +23,7 @@ const styles = {
   },
   description: {
     textAlign: 'left',
+    margin: '10px 20px'
   },
   tabBody: {
     border: "solid 1px #e9ebee"
@@ -30,52 +33,56 @@ const styles = {
 class ProductDetail extends Component {
   state = {
     //Product Data
-    name: "CD-6011 Fumigate Orthopedic Drill",
-    subtitle: "Ruijin orthopeadic bone drill is also a orthopedic drill system provides stable operation,safe, reliable, save time and effort.This type of bone drill was modified from industrial drill, apply to trauma operation, compact and lightweight making it useful in long operations.Fumigation sterilization of the whole machine (No sterilization under high temperature).Charging time is short.",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eos ex exercitationem sequi tempore itaque suscipit, iusto officia earum at aspernatur magnam, iure harum accusamus corrupti, soluta porro modi. Voluptatem.",
-    specificationTable: {
-      'Model NO.': 'CD-6011',
-      Type: 'Awl',
-      Application: 'Orthopedic',
-      Material: 'Stainless Steel',
-      Feature: 'Reusable	Medical Device',
-      'Regulatory Type': 'Type 2',
-      'Medical devises Reg./Record No.': 'Wsyjxzz2012-2100053',
-      Properties: 'Ortho Drill Medical Equipment'
-    },
+    name: "",
+    subtitle: "",
+    description: "",
+    specificationTable: {},
     variances: [
-      "Width 5mm \n 10 hole \n Length 43mm \n Screw 1,5mm",
-      "Width 5mm \n 10 hole \n Length 43mm \n Screw 1,5mm",
-      "Width 5mm \n 10 hole \n Length 43mm \n Screw 1,5mm",
     ],
     productImages: [
-      {
-        imgUrl: "https://www.ruijinmedical.com/wp-content/uploads/2018/07/CD-1001-1.jpg",
-        altText: 'drill 1'
-      },
-      {
-        imgUrl: "https://www.ruijinmedical.com/wp-content/uploads/2018/07/CD-1001-3.jpg",
-        altText: 'drill 1'
-      },
-      {
-        imgUrl: "https://www.ruijinmedical.com/wp-content/uploads/2018/07/CD-1001-2.jpg",
-        altText: 'drill 1'
-      }
     ],
+    productStructure: {},
     // Page State
-    primaryImage: {},
+    primaryImage: {
+      imgUrl: '',
+      altText: ''
+    },
     activeTab: "product-specification",
   }
 
   componentDidMount(){
-    this.setPrimaryImage()
+    const pathArr = this.props.location.pathname.split('/')
+    const productId = pathArr[pathArr.length - 1];
+    this.fetchProductDetail(productId)
   }
 
   // HANDLE CHANGE
 
+  setInitialActiveTab = () =>{
+    const {description, specificationTable} = this.state
+    console.log(description === '', 'desc')
+    console.log((Object.keys(specificationTable).length), 'table')
+    if(description === '' && !Boolean(Object.keys(specificationTable).length)) {
+      this.setState({activeTab: 'product-variances'})
+    }
+  }
+
   setPrimaryImage = (selectedImage) => {
     selectedImage = selectedImage ? selectedImage : this.state.productImages[0];
     this.setState({primaryImage: selectedImage})
+  }
+
+  // ACTION
+
+  fetchProductDetail = async (productId) => {
+    const productDetail = await fakeFetch.productDetail(productId);
+
+    this.setState({...productDetail},
+      () => {
+        this.setPrimaryImage()
+        this.setInitialActiveTab()
+      }
+    )
   }
   // RENDER
   renderProductImages = () => {
@@ -114,7 +121,7 @@ class ProductDetail extends Component {
 
 
   renderProductTabs = () => {
-    const { activeTab, variances, description, specificationTable } = this.state;
+    const { activeTab, variances, description, specificationTable, productStructure } = this.state;
     const { classes } = this.props;
     const { handleChange } = Helpers;
 
@@ -122,7 +129,7 @@ class ProductDetail extends Component {
       <Table responsive>
         <tbody>
           {Object.keys(specificationTable).map((el, index) => (
-            <tr>
+            <tr key={index}>
               <th>{el}</th>
               <td>{specificationTable[el]}</td>
             </tr>
@@ -143,21 +150,41 @@ class ProductDetail extends Component {
       </Table>
     )
 
+    const renderProductStructureTable = () => (
+      <Table responsive>
+        <tbody>
+          {Object.keys(productStructure).map((el, index) => (
+            <tr key={index}>
+              <th>{el}</th>
+              <td>{productStructure[el]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    )
+
+
     return (
       <Tabs id="controlled-tab-example" className={classes.tab} activeKey={activeTab} onSelect={k => handleChange(this, "activeTab", k)} >
-        <Tab className={classes.tabBody} eventKey="product-specification" title="Product Specification">
-          {renderSpecificationTable()}
-          <p className={classes.description}>{description}</p>
-        </Tab>
+        {
+          (description !== '' || Boolean(Object.keys(specificationTable).length)) &&
+          <Tab className={classes.tabBody} eventKey="product-specification" title="Product Specification">
+            {renderSpecificationTable()}
+            <p className={classes.description}>{description}</p>
+          </Tab>
+        }
         {
           Boolean(variances.length) &&
           <Tab className={classes.tabBody} eventKey="product-variances" title="Product Variances">
             {renderVariancesTable()}
           </Tab>
         }
-        <Tab className={classes.tabBody} eventKey="product-structure" title="Product Structure">
-          {/* <Sonnet /> */}
-        </Tab>
+        {
+          Boolean(Object.keys(productStructure).length) &&
+          <Tab className={classes.tabBody} eventKey="product-structure" title="Product Structure">
+            {renderProductStructureTable()}
+          </Tab>
+        }
       </Tabs>
     )
   }
@@ -167,7 +194,7 @@ class ProductDetail extends Component {
     const { renderProductTabs } = this;
 
     return (
-      <div className="custom-container">
+      <div className="custom-container product-detail-container">
         <Grid container spacing={2} >
           <Grid item xs={12} sm={4} >
             {this.renderProductImages()}
@@ -187,4 +214,4 @@ class ProductDetail extends Component {
   }
 }
 
-export default withStyles(styles)(ProductDetail);
+export default withStyles(styles)(withRouter(ProductDetail));

@@ -10,6 +10,8 @@ import {
   Grid
 } from '@material-ui/core';
 
+import GoogleMaps from './GoogleMaps';
+
 const useStyles = makeStyles(theme => ({
   icon: {
     margin: theme.spacing(1),
@@ -22,20 +24,25 @@ const Footer = () => {
   return(
     <div id="footer">
       <Grid container spacing={4} justify="space-between">
-      <Grid item xs={12} sm={4}>
+      <Grid item xs={12} sm={6}>
           <h2>About Us</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas provident id quidem, rem animi ducimus praesentium. Dolorum aperiam quibusdam, consectetur voluptatibus quaerat neque corporis ipsa fuga, numquam cumque laboriosam eligendi.</p>  
+          <p>Mitra Veterindo Selaras is one of the leading Animal Orthopaedics distributor companies in Indonesia. We are focused in marketing of implants(plates, screw, wire), Power Instruments, basic Instruments for all specialties, and other Advanced Surgical products and Technologies.</p>  
         </Grid>
-        <Grid item xs={12} sm={4}>
+      {/* <Grid item xs={12} sm={4}>
+          <GoogleMaps />
+        </Grid> */}
+        <Grid item xs={12} sm={6}>
           <h2>Contact Us</h2>
-          <div style={{display: "flex", alignItems: "center"}}>
+          <div style={{display: "flex", alignItems: "center", justifyContent: 'left'}}>
             <div>
               <PhoneIcon className={classes.icon}>
                 filled
               </PhoneIcon>
             </div>
             <div>
-              (+62) 812 8249 8252
+              <a href="https://wa.me/6282210437008" target="_blank">
+                (+62) 822 1043 7008
+              </a>
             </div>
           </div>
           <div style={{display: "flex", alignItems: "center"}}>
@@ -45,13 +52,11 @@ const Footer = () => {
               </MailIcon>
             </div>
             <div>
-              fernanda@mvsIndo.com
+              <a href="mailto:mitraveterindoselaras@gmail.com" >
+                mitraveterindoselaras@gmail.com
+              </a>
             </div>
           </div>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <h2>About Us</h2>
-          <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas provident id quidem, rem animi ducimus praesentium. Dolorum aperiam quibusdam, consectetur voluptatibus quaerat neque corporis ipsa fuga, numquam cumque laboriosam eligendi.</h3>  
         </Grid>
       </Grid>
       </div>

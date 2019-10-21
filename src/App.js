@@ -13,6 +13,8 @@ import Home from './Views/Home';
 import Product from './Views/Product';
 import News from './Views/News';
 import ProductDetail from './Views/ProductDetail';
+import NewsDetail from './Views/NewsDetail';
+import AboutUs from './Views/AboutUs';
 
 function App() {
   return (
@@ -23,8 +25,10 @@ function App() {
 
         <Route path="/" exact component={Home} />
         <Route path="/news" exact component={News} />
+        <Route path={`/news/:newsId`} component={NewsDetail} />
         <Route path="/products" exact component={Product} />
         <Route path={`/products/:productId`} component={ProductDetail} />
+        <Route path={`/about-us`} component={AboutUs} />
 
         <Footer />
       </Router>

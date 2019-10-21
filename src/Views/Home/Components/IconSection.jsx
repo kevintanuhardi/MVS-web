@@ -28,17 +28,23 @@ const useStyles = makeStyles(theme => ({
   //     color: red[800],
   //   },
   // },
+  // iconBlock: {
+  //   marginRight: '2%',
+  //   marginLeft: '2%',
+  // },
   section: {
     minHeight: "500px",
     backgroundColor: "#f1fcff",
+    paddingRight: "2%",
+    paddingLeft: "2%",
   }
 }));
 
 const IconSection = () => {
   const classes = useStyles();
   return (
-    <Grid container alignContent="center"  className={classes.section}>
-      <Grid item xs={12} sm={4}>
+    <Grid container spacing={5} alignContent="center"  className={classes.section}>
+      <Grid item className={classes.iconBlock} xs={12} sm={4}>
       <CalendarIcon className={classes.icon}>
         filled
       </CalendarIcon>
@@ -50,7 +56,7 @@ const IconSection = () => {
       </p>
 
       </Grid>
-      <Grid item xs={12} sm={4}>
+      <Grid item className={classes.iconBlock} xs={12} sm={4}>
         <CheckIcon className={classes.icon}>
           filled
         </CheckIcon>
@@ -61,7 +67,7 @@ const IconSection = () => {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis reprehenderit delectus aspernatur exercitationem ut veritatis obcae
         </p>
       </Grid>
-      <Grid item xs={12} sm={4}>
+      <Grid item className={classes.iconBlock} xs={12} sm={4}>
         <ShieldIcon className={classes.icon}>
           filled
         </ShieldIcon>

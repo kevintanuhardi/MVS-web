@@ -1,0 +1,58 @@
+.news-jumbotron {
+  background-image: 
+  linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ),
+    url("/newsBackground.jpg");
+  min-height: 400px;
+  width: 100vw;
+  color: snow;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-jumbotron-text {
+  display: flex;
+  justify-content: center;
+}
+
+#title-div {
+  /* border: solid 2px white; */
+  width: 70%;
+}
+
+#title-div h1{
+  font-size: 4vw;
+  text-align: left;
+  font-weight: bolder;
+}
+
+#date-div {
+  border-right: solid 2px white;
+  height: 16vh;
+  padding: 0 1vw;
+  margin: 0 2vw;
+}
+
+#date-div h1{
+  font-size: 3vw;
+}
+
+#date-div h2{
+  font-size: 2vw;
+}
+
+.content-block{
+  padding-top: 10vh;
+}
+.paragraph-block{
+  padding-top: 2vh;
+  text-align: left;
+}
+
+.carousel-caption {
+  background-color: rgba(116,116,116, 0.5)
+}

@@ -1,0 +1,46 @@
+.mission-block {
+  width: 100vw;
+  display: flex;
+}
+
+.half-block {
+  width: 50vw;
+  height: 80vh;
+}
+
+.first-image {
+  background-image: 
+  linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url("/mission-background.jpeg");
+  background-position: 15% 0;
+}
+
+.second-image {
+  background-image: 
+  linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url("/jumbotron.jpg");
+  background-position: 15% 0;
+}
+
+.text-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text-block h3 {
+  margin: 0 5vw;
+  text-align: left;
+}
+
+.first-text {
+  background-color: #00A7D8;
+  color: #FFFFFD;
+}
+.first-text h3 {
+  color: #e1e1e1;
+}
+
+.second-text h3 {
+  color: #a1a791;
+}

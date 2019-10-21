@@ -8,9 +8,6 @@
   max-width: 85%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5rem;
-  margin-bottom: 1rem;
-  min-height: 100vh;
 }
 
 .App-logo {
@@ -73,7 +70,7 @@
 
 .jumbotron {
   background-image: 
-  linear-gradient(to top, rgba(0, 88, 148, 0), rgba(0, 88, 148, 0.2)),
+  linear-gradient(to top, rgba(0, 88, 148, 0), rgba(0, 88, 148, 0.5)),
   url("/jumbotron.jpg");
   z-index: -1;
   background-repeat: no-repeat;
@@ -152,6 +149,10 @@
 
 #footer {
   height: 200px;
+  margin-top: 5rem;
+  max-width: 85%;
+  margin-left: auto;
+  margin-right: auto;
   background-color: snow;
   display: flex;
   justify-content: space-evenly;
@@ -162,4 +163,3 @@
   text-align: left;
   width: 500px;
 }
-

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import {
   Grid,
   Card,
@@ -10,23 +11,29 @@ import {
 } from '@material-ui/core/styles';
 
 import Helpers from '../helpers/common'
+import fakeFetch from '../helpers/fakeFetch'
 import './Product.css'
 
 const styles = {
   card: {
     maxWidth: 345,
-    height: 450,
+    height: '40vh',
     '&:hover': {
-      boxShadow: "0px 4px 5px 6px rgba(0,0,0,0.5), 5px 10px 1px 0px rgba(0,0,0,0.4), 0px 2px 1px -1px rgba(0,0,0,0.35)",
+      boxShadow: "0px 3px 18px rgba(0,0,0,0.3), 2px 2px 1px rgba(0,0,0,0.3), 0px 2px 18px rgba(0,0,0,0.35)",
       cursor: "pointer",
     }
+  },
+  cardHeader: {
+    height: '10vh'
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
   productImage: {
-    maxHeight: "200px",
+    height: '200px',
+    width: '90%',
+    objectFit: 'contain',
   },
   categoryBlock: {
     color: "#919191",
@@ -38,84 +45,77 @@ const styles = {
   categoryImage: {
     height: "100px",
     width: "100px",
+    filter: "grayscale(100%)",
+    '&:hover': {
+      filter: "grayscale(0%)"
+    }
   }
 };
 
 class Product extends Component {
   state = {
+    // page states
+    selectedCategory : {},
+    // data
     categories: [
       {
-        imageUrl: "https://www.news-medical.net/image.axd?picture=2013%2F6%2FMCZ-Series_7.JPG",
-        title: "Drill",
+        imgUrl: `${process.env.PUBLIC_URL}/categoriesImage/power-instruments.png`,
+        title: "Power Instruments",
+        description: 'Offering the ultimate in convenience and versatility.Widely applied in joint surgery, trauma surgery, neurosurgery, thoracic surgery.This medical multifunction drill saw includes various drills and saws, along with a wide selection of attachments.',
         _id: 1,
       },
       {
-        imageUrl: "https://5.imimg.com/data5/BM/PA/MY-9082765/bone-implant-instruments-500x500.jpg",
-        title: "Instrument",
+        imgUrl: `${process.env.PUBLIC_URL}/categoriesImage/basic-instruments.png`,        
+        title: "Basic Instruments",
+        description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis repudiandae qui architecto quas, illo nemo! Eos temporibus velit quos nostrum natus quis inventore? Pariatur illo quae consequatur non voluptate fuga.',
         _id: 2,
       },
       {
-        imageUrl: "https://5.imimg.com/data5/NK/DB/MY-3474863/bone-plate-500x500.jpg",
-        title: "Plate",
+        imgUrl: `${process.env.PUBLIC_URL}/categoriesImage/plates.png`,        
+        title: "Plates",
+        description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis repudiandae qui architecto quas, illo nemo! Eos temporibus velit quos nostrum natus quis inventore? Pariatur illo quae consequatur non voluptate fuga.',
         _id: 3,
+      },
+      {
+        imgUrl: `${process.env.PUBLIC_URL}/categoriesImage/screws.png`,        
+        title: "Screws",
+        description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis repudiandae qui architecto quas, illo nemo! Eos temporibus velit quos nostrum natus quis inventore? Pariatur illo quae consequatur non voluptate fuga.',
+        _id: 4,
+      },
+      {
+        imgUrl: `${process.env.PUBLIC_URL}/categoriesImage/bone-models.png`,
+        title: "Bone Models",
+        description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis repudiandae qui architecto quas, illo nemo! Eos temporibus velit quos nostrum natus quis inventore? Pariatur illo quae consequatur non voluptate fuga.',
+        _id: 5,
       },
     ],
     products: [
-      {
-        _id: 1,
-        name: "Drill A",
-        imageUrl: "https://www.news-medical.net/image.axd?picture=2013%2F6%2FMCZ-Series_7.JPG",
-        category: 1,
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus optio et ab, libero soluta possimus incidunt rerum, repellendus voluptas nostrum culpa, quas ut cum voluptates! Necessitatibus ullam hic ea repellat.",
-      },
-      {
-        _id: 2,
-        name: "Drill B",
-        imageUrl: "https://sc01.alicdn.com/kf/HTB17hSCATlYBeNjSszcq6zwhFXap/Medical-Surgical-Power-Veterinary-Orthopedic-Drill-And.jpg_350x350.jpg",
-        category: 1,
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus optio et ab, libero soluta possimus incidunt rerum, repellendus voluptas nostrum culpa, quas ut cum voluptates! Necessitatibus ullam hic ea repellat.",
-      },
-      {
-        _id: 3,
-        name: "Drill C",
-        imageUrl: "https://image.made-in-china.com/202f0j00byvEBRNPkduS/Ruijin-Medical-Devices-Electric-Surgical-Bone-Drills-with-Drill-Bits-ND-1001-.jpg",
-        category: 1,
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus optio et ab, libero soluta possimus incidunt rerum, repellendus voluptas nostrum culpa, quas ut cum voluptates! Necessitatibus ullam hic ea repellat.",
-      },
-      {
-        _id: 4,
-        name: "Drill A",
-        imageUrl: "https://www.news-medical.net/image.axd?picture=2013%2F6%2FMCZ-Series_7.JPG",
-        category: 1,
-        
-      },
-      {
-        _id: 5,
-        name: "Drill A",
-        imageUrl: "https://www.news-medical.net/image.axd?picture=2013%2F6%2FMCZ-Series_7.JPG",
-        category: 1,
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus optio et ab, libero soluta possimus incidunt rerum, repellendus voluptas nostrum culpa, quas ut cum voluptates! Necessitatibus ullam hic ea repellat.",
-      },
-      {
-        _id: 6,
-        name: "Drill A",
-        imageUrl: "https://www.news-medical.net/image.axd?picture=2013%2F6%2FMCZ-Series_7.JPG",
-        category: 1,
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus optio et ab, libero soluta possimus incidunt rerum, repellendus voluptas nostrum culpa, quas ut cum voluptates! Necessitatibus ullam hic ea repellat.",
-      },
-      {
-        _id: 7,
-        name: "Drill A",
-        imageUrl: "https://www.news-medical.net/image.axd?picture=2013%2F6%2FMCZ-Series_7.JPG",
-        category: 1,
-      },
+      
     ]
   }
 
+  // LIFECYCLE
+  
+  componentDidMount(){
+    this.selectCategory(this.state.categories[0])
+    this.fetchProducts(this.state.categories[0]._id)
+  }
+
+  // HANDLE CHANGE
+  selectCategory = (selectedCategory) => {
+    this.fetchProducts(selectedCategory._id)
+    this.setState({selectedCategory})
+  }
   // ACTION
   redirectToProductDetail = (productId)  => {
     console.log(this)
     this.props.history.push(`/products/${productId}`)
+  }
+
+  fetchProducts = async (categoriesId, pages) => {
+    const products = await fakeFetch.products(categoriesId, pages);
+
+    this.setState({products})
   }
 
   // RENDER
@@ -125,8 +125,14 @@ class Product extends Component {
     return(
       <Grid container spacing={2} justify="center">
         {categories.map((el, index) => (
-          <Grid className={classes.categoryBlock} key={index} item>
-            <img className={classes.categoryImage} src={el.imageUrl} alt={el.title}/>
+          <Grid
+            item
+            // xs={1}
+            className={classes.categoryBlock}
+            key={index}
+            onClick={() => this.selectCategory(el)}
+          >
+            <img className={classes.categoryImage} src={el.imgUrl} alt={el.title}/>
             <h5>{el.title}</h5>
           </Grid>
         ))}
@@ -140,45 +146,59 @@ class Product extends Component {
     const { redirect } = Helpers;
 
     return (
-      <Grid container spacing={2}>
+      <Grid container spacing={4}>
         {
-          products.map((el, index) => (
-            <Grid item key={index} xs={6} sm={3}>
-              <Card
-                className={classes.card}
-                onClick={() => redirect(this, 'products', el._id)}
-              >
-                {/* <CardMedia
-                  className={classes.media}
-                  image={el.imageUrl}
-                  title={el.name}
-                /> */}
-                <CardHeader
-                  title={el.name}
-                />
-                <CardContent>
-                  <img className={classes.productImage} src={el.imageUrl} alt={el.name}/>
-                  <p>{el.description}</p>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))
+          products.map((el, index) => {
+            const primaryImage = _.result(el, 'productImages[0].imgUrl');
+            const primaryAltText = _.result(el, 'productImages[0].altText');
+            const parsedDesc = el.description.length > 50 ? el.description.slice(0, 50) + ' ...Read More' : el.description;
+            const parsedTitle = el.name.length > 30 ? el.name.slice(0, 30) + ' ...' : el.name;
+            return (
+              <Grid item key={index} xs={12} sm={3}>
+                <Card
+                  className={classes.card}
+                  onClick={() => {
+                    redirect(this, 'products', el._id)
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    })
+                  }}
+                >
+                  <CardHeader
+                    title={parsedTitle}
+                    className={classes.cardHeader}
+                  />
+                  <CardContent>
+                    <img className={classes.productImage} src={primaryImage} alt={primaryAltText}/>
+                    <p>{parsedDesc}</p>
+                  </CardContent>
+                </Card>
+              </Grid>
+            )
+          })
         }
       </Grid>
     )
   }
   render () {
+    const { selectedCategory } = this.state;
     return (
       <div className="custom-container">
-        <h1>Category</h1>
-        {this.renderCategoryGrid()}
-        <Grid container spacing={5} justify="space-between">
-          <Grid item xs={12} sm={4}>
-            <h3>
-              Category Title
-            </h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa provident ipsam a minima vitae praesentium aut, autem eaque perspiciatis quae libero alias obcaecati et modi eligendi fugiat reiciendis odio illo.</p>
-          </Grid>
+        <div className='category-section'>
+          <h1 className='colored-text category'>Category</h1>
+          {this.renderCategoryGrid()}
+        </div>
+        <Grid container spacing={5} justify="center">
+          {/* {
+            Object.keys(selectedCategory).length > 0 && */}
+            <Grid item xs={12} sm={4}>
+              <h3 className='colored-text'>
+                {selectedCategory.title}
+              </h3>
+              <p>{selectedCategory.description}</p>
+            </Grid>
+          {/* } */}
           <Grid item xs={12} sm={8}>
             {this.renderProductGrid()}
           </Grid>

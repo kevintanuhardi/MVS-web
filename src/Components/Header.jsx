@@ -37,10 +37,6 @@ class Header extends Component {
   state = {
     navbarTitle: [
       {
-        title: "Tentang Kami",
-        link: "about-us"
-      },
-      {
         title: "Products",
         link: "products"
       },
@@ -49,12 +45,12 @@ class Header extends Component {
         link: "news"
       },
       {
-        title: "Contact Us",
-        link: "contact-us"
+        title: "Contact",
+        link: "contact"
       },
       {
-        title: "Company Profile",
-        link: "company-profile"
+        title: "About Us",
+        link: "about-us"
       },
     ],
     location: this.props.location.pathname,
