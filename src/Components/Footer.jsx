@@ -24,13 +24,6 @@ const Footer = () => {
   return(
     <div id="footer">
       <Grid container spacing={4} justify="space-between">
-      <Grid item xs={12} sm={6}>
-          <h2>About Us</h2>
-          <p>Mitra Veterindo Selaras is one of the leading Animal Orthopaedics distributor companies in Indonesia. We are focused in marketing of implants(plates, screw, wire), Power Instruments, basic Instruments for all specialties, and other Advanced Surgical products and Technologies.</p>  
-        </Grid>
-      {/* <Grid item xs={12} sm={4}>
-          <GoogleMaps />
-        </Grid> */}
         <Grid item xs={12} sm={6}>
           <h2>Contact Us</h2>
           <div style={{display: "flex", alignItems: "center", justifyContent: 'left'}}>
@@ -57,6 +50,10 @@ const Footer = () => {
               </a>
             </div>
           </div>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <h2>About Us</h2>
+          <p>Mitra Veterindo Selaras is one of the leading Animal Orthopaedics distributor companies in Indonesia. We are focused in marketing of implants(plates, screw, wire), Power Instruments, basic Instruments for all specialties, and other Advanced Surgical products and Technologies.</p>  
         </Grid>
       </Grid>
       </div>

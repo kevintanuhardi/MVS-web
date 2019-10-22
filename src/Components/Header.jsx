@@ -54,7 +54,7 @@ class Header extends Component {
       },
     ],
     location: this.props.location.pathname,
-    displayNavText: true,
+    displayNavText: false,
   }
 
   componentDidUpdate(prevProps){

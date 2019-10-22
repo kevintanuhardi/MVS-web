@@ -44,3 +44,13 @@
 .second-text h3 {
   color: #a1a791;
 }
+
+@media only screen and (max-width: 768px) {
+  .first-image,
+  .second-image {
+    display: none;
+  }
+  .half-block {
+    width: 100vw;
+  }
+}
